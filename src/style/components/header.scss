@@ -1,0 +1,60 @@
+.header-main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: $primary;
+    border-bottom-left-radius: 85px;
+    border-bottom-right-radius: 85px;
+}
+.header-logo{
+display: flex;
+justify-content: center;
+}
+.header-logo img{
+    width: 50%;
+}
+.form-search{
+    display: flex;
+}
+.header-search{
+width: 50%;
+}
+.text-search{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid $dark-yellow;
+    outline: none;
+    background:$light-yellow;
+    font-size: 25px;
+}
+.btn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 7px 10px 7px 10px;
+    transition: color .3s ease;
+    &:focus{
+       outline: none;
+
+    }
+    &:hover{
+        color: darken($color: white, $amount: 10);
+    }
+    
+}
+.btn-primary{
+    background-color: $button;
+    border-radius: 2px;
+    &:disabled{
+        background-color: lighten($color: $button, $amount: 15);
+    }
+    &:hover{
+        background-color: darken($color: $button, $amount: 20);
+    }
+}
+.btn-block{
+    width: 100%;
+}
