@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { GhibliContext } from './reducer/GhibliContext'
+import { GhibliReducer } from './reducer/ghibliReducer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { GhibliRouter } from './router/GhibliRouter'
+
+
+export const App = () => {
+ 
+ 
+  console.log(films)
+    return (
+        <GhibliContext.Provider value={{films,dispatch}}>
+        <GhibliRouter />
+        </GhibliContext.Provider>
+    )
 }
-
-export default App;
