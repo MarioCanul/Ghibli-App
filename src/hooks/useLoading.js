@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useReducer, useState } from 'react'
 import { GhibliReducer } from '../reducer/ghibliReducer'
 const init = () => {
@@ -15,17 +16,43 @@ const init = () => {
     );
   };
 export const useLoading = () => {
+    
     const [films, dispatch] = useReducer(GhibliReducer, {}, init)
     const [Personas, setPersona] = useState([]);
     useEffect(() => {
-        
-        return () => {
-            cleanup
-        }
-    }, [input])
-    return (
-        <div>
-            
-        </div>
-    )
+        const urls=[
+            "https://ghibliapi.herokuapp.com/films/",
+            "https://ghibliapi.herokuapp.com/species/",
+            "https://ghibliapi.herokuapp.com/people/",
+            "https://ghibliapi.herokuapp.com/vehicles/",
+            "https://ghibliapi.herokuapp.com/locations/",
+
+        ]
+        let Peticiones = [];
+        for (let index = 0; index < urls.length; index++) {
+            const element = urls[index];
+            Peticiones.push(
+               axios.get(element)
+            );
+          }
+
+          Promise.all(Peticiones)
+        .then(function (results) {
+            console.log(results)
+         dispatch({
+            type: "loading",
+            payload: {
+              movies: results[0].data,
+              especies: results[1].data,
+              personas: results[2].data,
+              vehiculos:results[3].data,
+              locations: results[4].data,
+              loading: false,
+              error: false,
+            },
+          })
+  });
+
+    }, [])
+    return [films, dispatch]
 }
