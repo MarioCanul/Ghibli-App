@@ -32,22 +32,22 @@ export const GhibliCard = ({
                 <hr/>
                 <div className='card-ambient mb-1 mt-1'>
                     <Link className='pointer'
-                    to={`/people/${id}`}
+                    to={`/More/${id}/${'Personas'}`}
                     >
                         Personas
                     </Link>
                     <Link className='pointer'
-                    to={`/especies/${id}`}
+                    to={`/More/${id}/${'Especies'}`}
                     >
                         Especies
                     </Link>
                     <Link className='pointer'
-                    to={`/locations/${id}`}
+                    to={`/More/${id}/${'Lugares'}`}
                     >
                     Lugares
                     </Link>
                     <Link className='pointer'
-                    to={`/vehicles/${id}`}
+                    to={`/More/${id}/${'Carros'}`}
                     >
                     Vehiculos
                     </Link>

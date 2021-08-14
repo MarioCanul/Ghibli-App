@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useReducer, useState } from 'react'
+import  { useEffect, useReducer} from 'react'
 import { GhibliReducer } from '../reducer/ghibliReducer'
 const init = () => {
     
@@ -18,7 +18,7 @@ const init = () => {
 export const useLoading = () => {
     
     const [films, dispatch] = useReducer(GhibliReducer, {}, init)
-    const [Personas, setPersona] = useState([]);
+ 
     useEffect(() => {
         const urls=[
             "https://ghibliapi.herokuapp.com/films/",
@@ -38,7 +38,7 @@ export const useLoading = () => {
 
           Promise.all(Peticiones)
         .then(function (results) {
-            console.log(results)
+           
          dispatch({
             type: "loading",
             payload: {
