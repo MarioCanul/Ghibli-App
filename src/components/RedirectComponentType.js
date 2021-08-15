@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { GetCarsByUrlFilm } from "../helper/GetCarsByIdFilm";
 import { GetEspecieByIdFIlm } from "../helper/GetEspecieByIdFIlm";
 import { GetPeopleByIdFIlm } from "../helper/GetPeopleByIdFIlm";
 import { GetUrlByIdFilm } from "../helper/GetUrlByIdFilm";
@@ -46,7 +47,19 @@ export const RedirectComponentType = () => {
         );
 
       case "Carros":
-        return <CardVehicles id={id} />;
+        const car =GetCarsByUrlFilm(urlFilm)
+        return (
+          <div className="list-cards">
+            {car.length > 0 ? (
+              car.map((item) => <CardVehicles key={item.id} {...item} urlFilm={urlFilm}/>)
+            ) : (
+              <div>
+                <h1>NO existen Datos</h1>
+                <Link to="/">Regresar</Link>
+              </div>
+            )}
+          </div>
+        );
       
       case "Lugares":
         return <CardLocations id={id} />;

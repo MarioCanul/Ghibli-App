@@ -13,17 +13,20 @@ export const CardEspecies = ({
   urlFilm,
 }) => {
   const { films: peliculas } = useContext(GhibliContext);
-  const { personas, especies } = peliculas;
+  const { personas,especies } = peliculas;
 
   const TraerPersonas = (people) => {
-    let PersonasName = [];
-    for (let index = 0; index < people.length; index++) {
-      const element = people[index];
-      const persona = personas.find((item) => item.url === element&& item.films[0]===urlFilm);
-      PersonasName.push(persona);
-    }
-    console.log(PersonasName);
-    return PersonasName.map((item) =>
+    especies.map(item=>item.name)
+    const personasConIdFilm = personas.filter((e) => {
+      const EnLaPeli = e.films.filter((item) => item === urlFilm);
+      if (EnLaPeli.length > 0) {
+        return true;
+      }
+      return false;
+    });
+    // const EspeciePersonajes=personasConIdFilm.filter(item=>item.species===url)
+    // console.log(EspeciePersonajes)
+    return personasConIdFilm.map((item) =>
       item ? (
         <ul key={item.id}>
           <span>{item.name}</span>
@@ -33,7 +36,7 @@ export const CardEspecies = ({
       )
     );
   };
-  const TraerPerliculas = () => {};
+
   return id ? (
     <div className="card-people animate__animated  animate__fadeIn">
       <h3>Nombre :{name}</h3>
@@ -45,8 +48,6 @@ export const CardEspecies = ({
       <h3>Color de Cabello :{hair_colors}</h3>
       <hr />
       <h3>Personajes :{TraerPersonas(people)}</h3>
-      <hr />
-      <h3>Especies :{TraerPerliculas(films)}</h3>
       <hr />
     </div>
   ) : (
