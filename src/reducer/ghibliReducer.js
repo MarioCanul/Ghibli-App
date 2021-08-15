@@ -6,6 +6,11 @@ export const GhibliReducer = (state={},action) => {
        return{
         ...action.payload,
        };
+       case 'Search':
+       console.log('aqui ando')
+    return {
+        ...action.payload
+    }
         default:
             return  state;
     }

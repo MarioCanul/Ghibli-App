@@ -1,60 +1,78 @@
-import React, { useState, useEffect, useRef, useLayoutEffect, useContext } from 'react';
-import { GhibliContext } from '../reducer/GhibliContext';
+import React, {
+  useState,
+  useContext,
+} from "react";
+import Autocomplete from "react-autocomplete";
+import { GhibliContext } from "../reducer/GhibliContext";
+const style = {
+  Menu: {
+    borderRadius: "3px",
+    boxShadow: "0 2px 12px rgba(0, 0, 0, 0.1)",
+    background: "rgba(255, 255, 255, 0.9)",
+    padding: "2px 0",
+    fontSize: "90%",
+    position: "fixed",
+    overflow: "auto",
+    maxHeight: "100%",
+  },
+  input: {
+    className: "text-search",
+  },
+};
+export const Search = ({setFilm}) => {
+  const { films,dispatch } = useContext(GhibliContext);
+  const { movies,especies,locations,error,loading,personas,vehiculos } = films;
+  const [search, setSearch] = useState("");
+  const handleItem=(e)=>{
+    e.preventDefault ()
+    console.log('submit')
+    const FilmSelected=movies.filter(m=>m.title===search)
+    console.log(FilmSelected)
+    dispatch({
+      type:'Search',
+      payload: {
+        movies:FilmSelected,
+        especies,
+        personas,
+        vehiculos,
+        locations,
+        loading,
+        error,
+      },
+    })
+  }
+  return (
+    < >
+    <form  
+    className='form-search'
+    onSubmit={handleItem}>
 
-export const Search = () => {
-    const { films} = useContext(GhibliContext);
-    const {movies} = films;
-    const [display, setDisplay] = useState(false);
-    const [options, setOptions] = useState(movies);
-    const [search, setSearch] = useState("");
-    const wrapperRef = useRef(null)
-    useEffect(() => {
-        window.addEventListener("mousedown", handleClickOutside);
-        return () => {
-          window.removeEventListener("mousedown", handleClickOutside);
-        };
-      });
-      const handleClickOutside = event => {
-        const { current: wrap } = wrapperRef;
-        if (wrap && !wrap.contains(event.target)) {
-          setDisplay(false);
+      <Autocomplete
+     
+      wrapperStyle={style.root}
+      inputProps={style.input}
+      menuStyle={style.Menu}
+      getItemValue={(item) => item.title}
+      items={movies}
+      renderItem={(item, isHighlighted) => {
+        return (
+          <div
+          key={item.id}
+          style={{ background: isHighlighted ? "lightgray" : "white" }}
+          >
+              {item.title}
+            </div>
+          );
+        }}
+        shouldItemRender={(item, value) =>
+          item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
         }
-      };
-      const updatePokeDex = poke => {
-        setSearch(poke);
-        setDisplay(false);
-      };
-    return (
-        <div ref={wrapperRef} className="header-search  mt-1 mb-1">
-       
-        <input type="text"
-        placeholder='Buscar Titulo'
-        className='text-search' 
-        onClick={() => setDisplay(!display)}
-        onChange={event => setSearch(event.target.value)}
         value={search}
-        
-            />
-              {display && (
-        <div className="autoContainer">
-          {options
-            .filter(({ title }) => title.indexOf(search.toLowerCase()) > -1)
-            .map((value, i) => {
-              return (
-                <div
-                  onClick={() => updatePokeDex(value.title)}
-                  className="option"
-                  key={i}
-                  tabIndex="0"
-                >
-                  <span>{value.title}</span>
-                  
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
+        onChange={(e) => setSearch(e.target.value)}
+        onSelect={(val) => setSearch(val)}
+        />
+      <button className='btn btn-primary' type='sumbit'>Buscar</button>
+        </form>
+    </>
   );
 };
-

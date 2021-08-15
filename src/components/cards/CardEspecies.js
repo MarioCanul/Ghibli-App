@@ -15,7 +15,7 @@ export const CardEspecies = ({
   const { films: peliculas } = useContext(GhibliContext);
   const { personas,especies } = peliculas;
 
-  const TraerPersonas = (people) => {
+  const TraerPersonas = () => {
     especies.map(item=>item.name)
     const personasConIdFilm = personas.filter((e) => {
       const EnLaPeli = e.films.filter((item) => item === urlFilm);

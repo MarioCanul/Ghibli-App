@@ -18,14 +18,16 @@ justify-content: center;
     display: flex;
 }
 .header-search{
+    display: flex;
 width: 50%;
+justify-content: center;
 }
 .text-search{
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid $dark-yellow;
+    display: flex;
+    border-radius: 3px;
+    border: 1px solid $light-yellow;
     outline: none;
-    background:$light-yellow;
+    background:white;
     font-size: 25px;
 }
 .btn{
