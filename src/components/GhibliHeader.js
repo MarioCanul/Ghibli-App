@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from './../assets/img/logo.svg'
 import { Search } from "./Search";
 
 export const GhibliHeader = () => {
@@ -7,7 +7,7 @@ export const GhibliHeader = () => {
     <>
     <div className="header-main">
       <div className="header-logo">
-        <img src="./src/logo.svg"
+        <img src={logo}
         alt='ghibli-logo' />
       </div>
     </div>

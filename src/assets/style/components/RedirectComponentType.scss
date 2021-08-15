@@ -1,0 +1,36 @@
+.list-cards{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap
+}
+.title-list{
+   display: flex;
+   flex-direction: row;
+    margin: auto;
+    width: 80%;
+
+    color: $dark-yellow;
+}
+.goback-button{
+  width: 40%;
+}
+.name-title{
+width: 60%;
+font-size: 18px;
+}
+.no-data{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+}
+.no-data-buton{
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  width: 100px;
+}

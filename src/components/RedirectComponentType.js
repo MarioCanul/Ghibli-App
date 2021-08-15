@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import {  useHistory, useParams } from "react-router-dom";
 import { GetCarsByUrlFilm } from "../helper/GetCarsByIdFilm";
 import { GetEspecieByIdFIlm } from "../helper/GetEspecieByIdFIlm";
 import { GetLocationByUrlFilm } from "../helper/GetLocationByUrlFilm";
@@ -9,13 +9,14 @@ import { CardEspecies } from "./cards/CardEspecies";
 import { CardLocations } from "./cards/CardLocations";
 import { CardPeople } from "./cards/CardPeople";
 import { CardVehicles } from "./cards/CardVehicles";
-import { InfoPeli } from "./InfoPeli";
+import { BackFilms } from "./BackFilms";
+import { NoData } from "./NoData";
 
 
 //redireccionamiento y carga de datos para las cards
 export const RedirectComponentType = () => {
 const history=useHistory()
-  console.log(history)
+  
   const { id, tipo,name } = useParams();
   const urlFilm =GetUrlByIdFilm(id)
   const ShowComponent = () => {
@@ -25,7 +26,7 @@ const history=useHistory()
         
         return (
           < >
-            <InfoPeli history={history} name={name}/>
+            <BackFilms history={history} name={name}/>
              
              <div className="list-cards">
              {filmspeople.length > 0 ? (
@@ -35,10 +36,7 @@ const history=useHistory()
                <CardPeople key={item.id}   {...item}/>
              ) 
            ) : (
-             <div>
-               <h1>NO existen Datos</h1>
-               <Link to="/">Regresar</Link>
-             </div>
+             <NoData/>
            )}
              </div>
            
@@ -48,17 +46,12 @@ const history=useHistory()
           const filmsEspecie = GetEspecieByIdFIlm(id);
           return (
             <> 
-            <div className='title-list'>
-            <h1>{name}</h1>
-            </div>
+             <BackFilms history={history} name={name}/>
           <div className="list-cards">
             {filmsEspecie.length > 0 ? (
               filmsEspecie.map((item) => <CardEspecies key={item.id} {...item} urlFilm={urlFilm}/>)
             ) : (
-              <div>
-                <h1>NO existen Datos</h1>
-                <Link to="/">Regresar</Link>
-              </div>
+              <NoData/>
               
             )}
           </div>
@@ -69,17 +62,12 @@ const history=useHistory()
         const car =GetCarsByUrlFilm(urlFilm)
         return (
           <> 
-          <div className='title-list'>
-            <h1>{name}</h1>
-            </div>
+           <BackFilms history={history} name={name}/>
           <div className="list-cards">
             {car.length > 0 ? (
               car.map((item) => <CardVehicles key={item.id} {...item} urlFilm={urlFilm}/>)
             ) : (
-              <div>
-                <h1>NO existen Datos</h1>
-                <Link to="/">Regresar</Link>
-              </div>
+              <NoData/>
             )}
           </div>
           </>
@@ -90,17 +78,12 @@ const history=useHistory()
        
         return (
         <>
-          <div className='title-list'>
-            <h1>{name}</h1>
-            </div>
+           <BackFilms history={history} name={name}/>
           <div className="list-cards">
             {Filmlocations.length > 0 ? (
               Filmlocations.map((item) => <CardLocations key={item.id} {...item} urlFilm={urlFilm}/>)
             ) : (
-              <div>
-                <h1>NO existen Datos</h1>
-                <Link to="/">Regresar</Link>
-              </div>
+              <NoData/>
             )}
           </div>
           </>
