@@ -13,6 +13,7 @@ export const GhibliCard = ({
     running_time,
     rt_score,
     people,
+    url
     
 }) => {
 

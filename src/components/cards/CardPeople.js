@@ -11,8 +11,9 @@ export const CardPeople =
     films,
     species,
     url
+    
 }) => {
-    console.log(id)
+    
     const {films:peliculas} = useContext(GhibliContext)
     const {movies, especies}=peliculas
     const TraerEspecies=(species)=>{
