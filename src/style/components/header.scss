@@ -4,28 +4,30 @@
     flex-direction: column;
     align-items: center;
     background-color: $primary;
-    border-bottom-left-radius: 85px;
-    border-bottom-right-radius: 85px;
+    border: 1px solid $dark;
+    
 }
 .header-logo{
 display: flex;
 justify-content: center;
 }
 .header-logo img{
-    width: 50%;
+    width: 100%;
+    height: 50px;
 }
 .form-search{
+    margin: auto;
     display: flex;
+    justify-content: center;
 }
 .header-search{
     display: flex;
-width: 50%;
 justify-content: center;
 }
 .text-search{
     display: flex;
     border-radius: 3px;
-    border: 1px solid $light-yellow;
+    border: 1px solid $black-silver;
     outline: none;
     background:white;
     font-size: 25px;

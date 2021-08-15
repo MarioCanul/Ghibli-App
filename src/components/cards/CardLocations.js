@@ -11,7 +11,7 @@ export const CardLocations = ({
   urlFilm,
 }) => {
     const { films: peliculas } = useContext(GhibliContext);
-  const { personas,especies } = peliculas;
+  const { personas } = peliculas;
     const TraerPersonas = () => {
         const idPersona=residents.map(item=>item.split('/')[4] )
         let filtered = idPersona.filter(Boolean);

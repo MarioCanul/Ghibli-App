@@ -10,8 +10,8 @@ export const CardPeople =
     hair_color,
     films,
     species,
-    url
-    
+    url,
+    namePelicula
 }) => {
     
     const {films:peliculas} = useContext(GhibliContext)

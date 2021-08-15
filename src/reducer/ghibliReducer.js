@@ -7,7 +7,7 @@ export const GhibliReducer = (state={},action) => {
         ...action.payload,
        };
        case 'Search':
-       console.log('aqui ando')
+       
     return {
         ...action.payload
     }

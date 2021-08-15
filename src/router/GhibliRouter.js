@@ -15,7 +15,7 @@ export const GhibliRouter = () => {
         <GhibliHeader /> 
           <Switch>
             <Route exact path="/" component={GhibliApp} />
-            <Route exact path="/More/:id/:tipo" component={RedirectComponentType} />
+            <Route exact path="/More/:id/:tipo/:name" component={RedirectComponentType} />
           </Switch>
         </div>
       </Router>
