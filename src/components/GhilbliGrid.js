@@ -17,12 +17,11 @@ export const GhilbliGrid = () => {
     return (
         <> 
            {
-( movies.length===1)?
+( movies.length===1&&loading===false)?
 <div className='back-home'><button onClick={CargarTodasLasPeliculas} className='btn btn-primary'>Regresar a las peliculas</button></div>:''
 
             }
         <div className='Ghibli-Grid'>
-         
              
        {
          (loading)? <h1>... loading</h1> : (
