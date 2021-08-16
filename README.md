@@ -14,7 +14,7 @@ https://github.com/MarioCanul/Ghibli-App/blob/main/src/components/RedirectCompon
 
 # Correr Proyecto
 https://github.com/MarioCanul/Ghibli-App
-git clone del proyecto
-cd al proyecto
-npm install
-npm start
+- git clone del proyecto
+- cd al proyecto
+- npm install
+- npm start
