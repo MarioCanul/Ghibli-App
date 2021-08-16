@@ -5,3 +5,15 @@
     justify-content: space-around;
     flex-wrap:wrap
 }
+.back-home{
+    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+.back-home button{
+    font-weight: bolder;
+    color:$dark;
+    font-size: 15px;
+    margin: 5px;
+}

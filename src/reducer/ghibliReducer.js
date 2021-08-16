@@ -11,6 +11,11 @@ export const GhibliReducer = (state={},action) => {
     return {
         ...action.payload
     }
+    case 'CargarLocalData':
+        const data=JSON.parse(localStorage.getItem("data"))
+       return{
+       ...data
+       };
         default:
             return  state;
     }

@@ -28,7 +28,7 @@ export const GhibliCard = ({
                 </div>
                 <div className='card-body'>
                 <p>{description}</p>
-                <span>{director}</span>
+                <h4>{director}</h4>
                 </div>
                 <hr/>
                 <div className='card-ambient mb-1 mt-1'>

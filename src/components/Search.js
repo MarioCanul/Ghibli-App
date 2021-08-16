@@ -1,8 +1,6 @@
-import React, {
-  useState,
-  useContext,
-} from "react";
+import React, { useState, useContext } from "react";
 import Autocomplete from "react-autocomplete";
+import { useHistory } from "react-router-dom";
 import { GhibliContext } from "../reducer/GhibliContext";
 const style = {
   Menu: {
@@ -19,60 +17,62 @@ const style = {
     className: "text-search",
   },
 };
-export const Search = ({setFilm}) => {
-  const { films,dispatch } = useContext(GhibliContext);
-  const { movies,especies,locations,error,loading,personas,vehiculos } = films;
+export const Search = () => {
+  const history = useHistory();
+  const { films, dispatch } = useContext(GhibliContext);
+  const { movies, especies, locations, error, loading, personas, vehiculos } =
+    films;
   const [search, setSearch] = useState("");
-  const handleItem=(e)=>{
-    e.preventDefault ()
-    console.log('submit')
-    const FilmSelected=movies.filter(m=>m.title===search)
-    console.log(FilmSelected)
-    dispatch({
-      type:'Search',
-      payload: {
-        movies:FilmSelected,
-        especies,
-        personas,
-        vehiculos,
-        locations,
-        loading,
-        error,
-      },
-    })
-  }
+  const handleItem = (e) => {
+    e.preventDefault();
+    const FilmSelected = movies.filter((m) => m.title === search);
+    if (FilmSelected.length!==0) {
+      dispatch({
+        type: "Search",
+        payload: {
+          movies: FilmSelected,
+          especies,
+          personas,
+          vehiculos,
+          locations,
+          loading,
+          error,
+        },
+      });
+      setSearch("");
+      history.push('/');
+    }
+  };
   return (
-    < >
-    <form  
-    className='form-search'
-    onSubmit={handleItem}>
-
-      <Autocomplete
-     
-      wrapperStyle={style.root}
-      inputProps={style.input}
-      menuStyle={style.Menu}
-      getItemValue={(item) => item.title}
-      items={movies}
-      renderItem={(item, isHighlighted) => {
-        return (
-          <div
-          key={item.id}
-          style={{ background: isHighlighted ? "lightgray" : "white" }}
-          >
-              {item.title}
-            </div>
-          );
-        }}
-        shouldItemRender={(item, value) =>
-          item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
-        }
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onSelect={(val) => setSearch(val)}
+    <>
+      <form className="form-search" onSubmit={handleItem}>
+        <Autocomplete
+          wrapperStyle={style.root}
+          inputProps={style.input}
+          menuStyle={style.Menu}
+          getItemValue={(item) => item.title}
+          items={movies}
+          renderItem={(item, isHighlighted) => {
+            return (
+              <div
+                key={item.id}
+                style={{ background: isHighlighted ? "lightgray" : "white" }}
+              >
+                {item.title}
+              </div>
+            );
+          }}
+          shouldItemRender={(item, value) =>
+            item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+          }
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onSelect={(val) => setSearch(val)}
         />
-      <button className='btn btn-primary' type='sumbit'>Buscar</button>
-        </form>
+        <button className="btn btn-primary" type="sumbit">
+          Buscar
+        </button>
+      </form>
     </>
   );
 };

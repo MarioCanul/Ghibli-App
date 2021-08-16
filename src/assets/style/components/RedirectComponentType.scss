@@ -11,13 +11,18 @@
     margin: auto;
     width: 80%;
 
-    color: $dark-yellow;
+    color: $dark;
 }
 .goback-button{
-  width: 40%;
+  width: 35%;
+}
+.goback-button button{
+  color:$dark;
+font-weight: bolder;
+  font-size: 15px;
 }
 .name-title{
-width: 60%;
+width: 65%;
 font-size: 18px;
 }
 .no-data{

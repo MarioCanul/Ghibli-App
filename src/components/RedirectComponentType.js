@@ -1,5 +1,5 @@
 import React from "react";
-import {  useHistory, useParams } from "react-router-dom";
+import {  Redirect, useParams } from "react-router-dom";
 import { GetCarsByUrlFilm } from "../helper/GetCarsByIdFilm";
 import { GetEspecieByIdFIlm } from "../helper/GetEspecieByIdFIlm";
 import { GetLocationByUrlFilm } from "../helper/GetLocationByUrlFilm";
@@ -14,11 +14,11 @@ import { NoData } from "./NoData";
 
 
 //redireccionamiento y carga de datos para las cards
-export const RedirectComponentType = () => {
-const history=useHistory()
+export const RedirectComponentType = ({history}) => {
   
   const { id, tipo,name } = useParams();
-  const urlFilm =GetUrlByIdFilm(id)
+  const urlFilm =GetUrlByIdFilm(id,history)
+  if (urlFilm===null) history.goBack()
   const ShowComponent = () => {
     switch (tipo) {
       case "Personas":
@@ -43,7 +43,7 @@ const history=useHistory()
           </>
         );
         case "Especies":
-          const filmsEspecie = GetEspecieByIdFIlm(id);
+          const filmsEspecie = GetEspecieByIdFIlm(id);//obtencion de las especies con el id de la pelicula
           return (
             <> 
              <BackFilms history={history} name={name}/>
@@ -59,7 +59,7 @@ const history=useHistory()
         );
 
       case "Carros":
-        const car =GetCarsByUrlFilm(urlFilm)
+        const car =GetCarsByUrlFilm(urlFilm)//obtencion de los vehiculos con la url de la pelicula
         return (
           <> 
            <BackFilms history={history} name={name}/>
@@ -74,7 +74,7 @@ const history=useHistory()
         );
       
       case "Lugares":
-        const Filmlocations=GetLocationByUrlFilm(urlFilm)
+        const Filmlocations=GetLocationByUrlFilm(urlFilm)//obtencion de los lugares con la url de la pelicula
        
         return (
         <>
@@ -90,7 +90,7 @@ const history=useHistory()
         );
 
       default:
-        break;
+        return <Redirect to='/'/>;
     }
   };
   return <>{ShowComponent()}</>;
