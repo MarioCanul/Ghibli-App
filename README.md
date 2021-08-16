@@ -9,7 +9,7 @@ implemente un  reducer para la carga de informacion de la api y almacenarlos en 
 optimizacion de las funciones que filtren la informacion y y una mejor prueba de los componentes
 
 # link a codigo 
-
+https://github.com/MarioCanul/Ghibli-App/blob/main/src/components/RedirectComponentType.js
 # link a App 
 
 # Correr Proyecto
