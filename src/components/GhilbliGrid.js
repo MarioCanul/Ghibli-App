@@ -6,6 +6,7 @@ import { GhibliCard } from './cards/GhibliCard';
 export const GhilbliGrid = () => {
     const {films,dispatch} = useContext(GhibliContext);
     const {movies,loading}=films
+    console.log(movies)
     const CargarTodasLasPeliculas=()=>{
         dispatch({
             type:'CargarLocalData',
@@ -17,7 +18,7 @@ export const GhilbliGrid = () => {
     return (
         <> 
            {
-( movies.length===1&&loading===false)?
+( !loading&&movies.length===1)?
 <div className='back-home'><button onClick={CargarTodasLasPeliculas} className='btn btn-primary'>Regresar a las peliculas</button></div>:''
 
             }
