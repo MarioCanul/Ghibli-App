@@ -1,4 +1,5 @@
 import React, {  useReducer, useState } from 'react'
+import { LoadinData } from './components/LoadinData'
 import { useLoading } from './hooks/useLoading'
 import { GhibliContext } from './reducer/GhibliContext'
 import { GhibliReducer } from './reducer/ghibliReducer'
@@ -28,10 +29,10 @@ export const App = () => {
   }
 
     return (
-       (!Alldata.loading)?(
+       (Alldata.loading)?(
         <GhibliContext.Provider value={{films,dispatch}}>
         <GhibliRouter />
         </GhibliContext.Provider>):
-    <h1>..loading</h1>
+    <LoadinData/>
     )
 }
