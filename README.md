@@ -11,7 +11,7 @@ optimizacion de las funciones que filtren la informacion y y una mejor prueba de
 # link a codigo 
 https://github.com/MarioCanul/Ghibli-App/blob/main/src/components/RedirectComponentType.js
 # link a App 
-
+https://mariocanul.github.io/Ghibli-App/
 # Correr Proyecto
 https://github.com/MarioCanul/Ghibli-App
 - git clone del proyecto

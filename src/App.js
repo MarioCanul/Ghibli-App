@@ -29,7 +29,7 @@ export const App = () => {
   }
 
     return (
-       (Alldata.loading)?(
+       (!Alldata.loading)?(
         <GhibliContext.Provider value={{films,dispatch}}>
         <GhibliRouter />
         </GhibliContext.Provider>):
