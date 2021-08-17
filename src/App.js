@@ -27,12 +27,12 @@ export const App = () => {
         CargarDataAlDispatch(dispatch,Alldata)
         return setstate(false)
   }
-
+ console.log(Alldata.loading)
     return (
        (!Alldata.loading)?(
         <GhibliContext.Provider value={{films,dispatch}}>
         <GhibliRouter />
         </GhibliContext.Provider>):
-    <LoadinData/>
+          <LoadinData/>
     )
 }
