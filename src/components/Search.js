@@ -30,12 +30,13 @@ export const Search = () => {
       dispatch({
         type: "Search",
         payload: {
-          movies: FilmSelected,
+          movies,
           especies,
           personas,
           vehiculos,
           locations,
           loading,
+          movieSelected:FilmSelected,
           error,
         },
       });
